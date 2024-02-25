@@ -9,9 +9,15 @@ import UIKit
 
 class Api {
     //MARK: - Properties
+    
     static let shared = Api()
     
+    //MARK: - Constructions
+    
+    private init() {}
+    
     //MARK: - Function
+    
     func getIndicators() -> [Indicator] {
         var indicators = [Indicator]()
         indicators.append(SingleIndicator(id: 0, title: "Валовая прибыль", value: "10 000 000", image: UIImage(systemName: "banknote")))

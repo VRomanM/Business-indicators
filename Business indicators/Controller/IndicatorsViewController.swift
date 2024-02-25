@@ -19,9 +19,6 @@ class IndicatorsViewController: UIViewController {
     //MARK: - Private properties
     private let singleCellID = "singleCellID"
     private let multiCellID = "multiCellID"
-    private lazy var api = {
-        return Api()
-    }()
     private var indicators = [Indicator]()
     
     //MARK: - Lifecycle
@@ -30,7 +27,7 @@ class IndicatorsViewController: UIViewController {
         indicatorsTableView.register(SingleIndicatorTableViewCell.self, forCellReuseIdentifier: singleCellID)
         indicatorsTableView.register(MultiIndicatorTableViewCell.self, forCellReuseIdentifier: multiCellID)
         configureView()
-        self.indicators = api.getIndicators()
+        self.indicators = Api.shared.getIndicators()
     }
     
     override func viewDidLayoutSubviews() {
