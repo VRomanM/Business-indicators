@@ -41,7 +41,7 @@ final class TabBarController: UITabBarController {
         self.viewControllers = dataSource.map {
             switch $0 {
             case .indicators:
-                let indicatorsViewController = IndicatorsViewController()
+                let indicatorsViewController = MyIndicatorsViewController()
                 return self.wrappedInNavigationController(with: indicatorsViewController, title: $0.title)
             case .reports:
                 let reportsViewController = ReportsViewController()

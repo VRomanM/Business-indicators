@@ -2,29 +2,76 @@
 //  IndicatorsViewController.swift
 //  Business indicators
 //
-//  Created by Роман Вертячих on 01.02.2024.
+//  Created by Роман Вертячих on 08.02.2024.
 //
 
 import UIKit
 
 class IndicatorsViewController: UIViewController {
-    //let navigationController = UINavigationController(rootViewController: IndicatorsViewController)
+    //MARK: - View
+    lazy var indicatorsTableView: UITableView = {
+        let indicatorsTableView = UITableView()
+        indicatorsTableView.delegate = self
+        indicatorsTableView.dataSource = self
+        return indicatorsTableView
+    }()
     
+    //MARK: - Private properties
+    private let singleCellID = "singleCellID"
+    private let multiCellID = "multiCellID"
+    private lazy var api = {
+        return Api()
+    }()
+    private var indicators = [Indicator]()
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        indicatorsTableView.register(SingleIndicatorTableViewCell.self, forCellReuseIdentifier: singleCellID)
+        indicatorsTableView.register(MultiIndicatorTableViewCell.self, forCellReuseIdentifier: multiCellID)
+        configureView()
+        self.indicators = api.getIndicators()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let heightIndicatorsTableView: CGFloat = view.frame.height - view.safeAreaInsets.top - (tabBarController?.tabBar.frame.height ?? 0)
+        indicatorsTableView.frame = .init(x: 0, y: navigationController?.navigationBar.frame.maxY ?? 0, width: view.frame.width, height: heightIndicatorsTableView)
     }
-    */
+    
+    //MARK: Private function
+    private func configureView() {
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        view.addSubview(indicatorsTableView)
+    }
+}
 
+extension IndicatorsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension IndicatorsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let singleIndicator = self.indicators[indexPath.row] as? SingleIndicator {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: singleCellID, for: indexPath) as? SingleIndicatorTableViewCell else { return UITableViewCell() }
+            cell.configureCell(indicator: singleIndicator)
+            return cell
+        } else if let multiIndicator = self.indicators[indexPath.row] as? MultiIndicator {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: multiCellID, for: indexPath) as? MultiIndicatorTableViewCell else { return UITableViewCell() }
+            cell.configureCell(indicator: multiIndicator)
+            return cell
+        } else {
+            return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        80
+    }
 }

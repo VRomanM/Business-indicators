@@ -35,6 +35,8 @@ class LoginViewController: UIViewController {
         let elementHeight: CGFloat = round(view.frame.height / 25)
         
         loginTextField.frame    = .init(x: round(view.frame.width / 2 - elementWidth / 2), y: round(view.frame.height / 3), width: elementWidth, height: elementHeight)
+//        passwordTextField.center = .init(x: loginTextField.center.x - loginTextField.frame.width / 2, y: loginTextField.center.y + loginTextField.frame.height / 2 + 15)
+//        passwordTextField.frame.size = .init(width: elementWidth, height: elementHeight)
         passwordTextField.frame = .init(x: loginTextField.frame.minX, y: loginTextField.frame.maxY + 15, width: elementWidth, height: elementHeight)
         signInButton.frame      = .init(x: passwordTextField.frame.minX + 10, y: passwordTextField.frame.maxY + 50, width: elementWidth - 20, height: elementHeight)
     }
@@ -61,7 +63,16 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func signIn(){
-        let tabBarController = TabBarController()
+        //let tabBarController = TabBarController()
+        let tabBarController = UITabBarController()
+        let indicatorsNavigationController = UINavigationController(rootViewController: MyIndicatorsViewController())
+        let reportsNavigationController = UINavigationController(rootViewController: ReportsViewController())
+        tabBarController.viewControllers = [indicatorsNavigationController, reportsNavigationController]
+        indicatorsNavigationController.tabBarItem.title = "Индикаторы"
+        indicatorsNavigationController.tabBarItem.image = UIImage(systemName: "dollarsign")
+        reportsNavigationController.tabBarItem.title = "Отчеты"
+        reportsNavigationController.tabBarItem.image = UIImage(systemName: "doc.on.doc")
+        
         tabBarController.modalPresentationStyle = .fullScreen
         present(tabBarController, animated: true, completion: nil)
     }
