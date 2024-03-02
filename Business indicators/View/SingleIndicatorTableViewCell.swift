@@ -8,12 +8,19 @@
 import UIKit
 
 class SingleIndicatorTableViewCell: UITableViewCell {
+    
     //MARK: - View
+    
     private let nameIndicatorLabel: UILabel = UILabel()
     private let valueIndicatorLabel: UILabel = UILabel()
     private let indicatorImage: UIImageView = UIImageView()
     
+    //MARK: - Private properties
+    
+    private let brush = UIColor()
+    
     //MARK: - Constructions
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         initCell()
@@ -24,6 +31,7 @@ class SingleIndicatorTableViewCell: UITableViewCell {
     }
    
     //MARK: - Lifecycle
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -34,26 +42,34 @@ class SingleIndicatorTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-//        print("maxX: \(contentView.frame.maxX) maxY: \(contentView.frame.maxY)")
         let heightCell = contentView.frame.maxY
         let widthCell = contentView.frame.maxX
         let separator: CGFloat = 10
         indicatorImage.frame = .init(x: separator, y: separator, width: heightCell - separator * 2, height: heightCell - separator * 2)
-        nameIndicatorLabel.frame = .init(x: indicatorImage.frame.maxX + separator, y: separator, width: widthCell - indicatorImage.frame.width  - separator * 4 - heightCell, height: heightCell - separator * 2)
+        nameIndicatorLabel.frame = .init(x: indicatorImage.frame.maxX + separator, y: separator, width: round((widthCell - indicatorImage.frame.width  - separator * 4) / 2), height: heightCell - separator * 2)
         valueIndicatorLabel.frame = .init(x: nameIndicatorLabel.frame.maxX + separator, y: separator, width: widthCell - nameIndicatorLabel.frame.maxX - separator * 2, height: heightCell - separator * 2)
     }
     
     //MARK: Private function
+    
     private func initCell() {
         contentView.addSubview(indicatorImage)
+        indicatorImage.contentMode = .scaleAspectFit
         contentView.addSubview(nameIndicatorLabel)
         contentView.addSubview(valueIndicatorLabel)
+        contentView.superview?.backgroundColor = brush.backgroundColor()
     }
     
     //MARK: - Function
+    
     func configureCell(indicator: SingleIndicator) {
         indicatorImage.image = indicator.image ?? UIImage(systemName: "person")
+        indicatorImage.tintColor = brush.textColor()
+        
         nameIndicatorLabel.text = indicator.title
+        nameIndicatorLabel.textColor = brush.textColor()
+        
         valueIndicatorLabel.text = indicator.value
+        valueIndicatorLabel.textColor = brush.textColor()
     }
 }
