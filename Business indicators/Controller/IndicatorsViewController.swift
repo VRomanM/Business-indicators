@@ -8,20 +8,30 @@
 import UIKit
 
 class IndicatorsViewController: UIViewController {
+    
     //MARK: - View
+    
     lazy var indicatorsTableView: UITableView = {
         let indicatorsTableView = UITableView()
         indicatorsTableView.delegate = self
         indicatorsTableView.dataSource = self
+        indicatorsTableView.backgroundColor = brush.backgroundColor()
         return indicatorsTableView
     }()
     
+    //MARK: - Properties
+    
+    var handleUpdatedIndicatorsDelegate: IndicatorsUpdateble?
+    
     //MARK: - Private properties
+    
     private let singleCellID = "singleCellID"
     private let multiCellID = "multiCellID"
     private var indicators = [Indicator]()
+    private let brush = UIColor()
     
     //MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         indicatorsTableView.register(SingleIndicatorTableViewCell.self, forCellReuseIdentifier: singleCellID)
@@ -37,8 +47,9 @@ class IndicatorsViewController: UIViewController {
     }
     
     //MARK: Private function
+    
     private func configureView() {
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        view.backgroundColor = brush.backgroundColor()
         view.addSubview(indicatorsTableView)
     }
 }
@@ -46,6 +57,8 @@ class IndicatorsViewController: UIViewController {
 extension IndicatorsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        handleUpdatedIndicatorsDelegate?.indicatorsUpdate(indicator: indicators[indexPath.row])
+        navigationController?.popViewController(animated: true)
     }
 }
 

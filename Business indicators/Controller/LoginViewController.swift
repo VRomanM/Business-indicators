@@ -8,14 +8,19 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    let loginTextField: UITextField = UITextField()
-    let passwordTextField: UITextField = UITextField()
-    let signInButton: UIButton = UIButton()
+    
+    //MARK: - Private properties
+    private let brush = UIColor()
+    private let loginTextField: UITextField = UITextField()
+    private let passwordTextField: UITextField = UITextField()
+    private let signInButton: UIButton = UIButton()
+    
+    //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = brush.backgroundColor()
         addElementsView()
         discribeElementsView()
     }
@@ -41,6 +46,8 @@ class LoginViewController: UIViewController {
         signInButton.frame      = .init(x: passwordTextField.frame.minX + 10, y: passwordTextField.frame.maxY + 50, width: elementWidth - 20, height: elementHeight)
     }
     
+    //MARK: Private function
+    
     private func addElementsView(){
         view.addSubview(loginTextField)
         view.addSubview(passwordTextField)
@@ -48,28 +55,39 @@ class LoginViewController: UIViewController {
     }
     
     private func discribeElementsView(){
-        loginTextField.layer.borderColor =  #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         loginTextField.borderStyle = .roundedRect
         loginTextField.placeholder = "login"
         
-        passwordTextField.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.placeholder = "password"
         
-        signInButton.backgroundColor = #colorLiteral(red: 0, green: 0.4910776615, blue: 1, alpha: 1)
+        signInButton.backgroundColor = brush.buttonColor()
         signInButton.layer.cornerRadius = 5
         signInButton.setTitle("Sign In", for: .normal)
         signInButton.addTarget(self, action: #selector(signIn), for: .touchDown)
     }
     
     @objc private func signIn(){
-        //let tabBarController = TabBarController()
         let tabBarController = UITabBarController()
+        tabBarController.tabBar.backgroundImage = UIImage()
+        tabBarController.tabBar.tintColor = brush.selectedTextColor()
+        tabBarController.tabBar.unselectedItemTintColor = brush.unselectedTextColor()
+                
         let indicatorsNavigationController = UINavigationController(rootViewController: MyIndicatorsViewController())
+        indicatorsNavigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        indicatorsNavigationController.navigationBar.shadowImage = UIImage()
+        indicatorsNavigationController.navigationBar.tintColor = brush.textColor()
+        indicatorsNavigationController.navigationBar.barStyle = .black
+        
+        if #available(iOS 11.0, *) {
+            indicatorsNavigationController.navigationBar.prefersLargeTitles = true
+        }
+        
         let reportsNavigationController = UINavigationController(rootViewController: ReportsViewController())
         tabBarController.viewControllers = [indicatorsNavigationController, reportsNavigationController]
         indicatorsNavigationController.tabBarItem.title = "Индикаторы"
         indicatorsNavigationController.tabBarItem.image = UIImage(systemName: "dollarsign")
+        
         reportsNavigationController.tabBarItem.title = "Отчеты"
         reportsNavigationController.tabBarItem.image = UIImage(systemName: "doc.on.doc")
         

@@ -7,54 +7,108 @@
 
 import UIKit
 
-class MyIndicatorsViewController: UIViewController {
+class MyIndicatorsViewController: UIViewController, IndicatorsUpdateble {
+        
     //MARK: - Views
+    
     private lazy var indicatorsTableView: UITableView = {
         let indicatorstableView = UITableView()
         indicatorstableView.delegate = self
         indicatorstableView.dataSource = self
+        indicatorstableView.backgroundColor = brush.backgroundColor()
         return indicatorstableView
     }()
     private let filterStackView = UIStackView()
+    private let todayFilterButton = UIButton()
+    private let weekFilterButton = UIButton()
+    private let monthFilterButton = UIButton()
+    private let filterSetupButton = UIButton()
+    
+    //MARK: - Properties
+    
+    var indicators = [Indicator]()
     
     //MARK: - Private properties
-    private let cellID = "cellId"
+    
+    private let singleCellID = "singleCellID"
+    private let multiCellID = "multiCellID"
+    private let brush = UIColor()
     
     //MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        indicatorsTableView.register(SingleIndicatorTableViewCell.self, forCellReuseIdentifier: cellID)
+        indicatorsTableView.register(SingleIndicatorTableViewCell.self, forCellReuseIdentifier: singleCellID)
+        indicatorsTableView.register(MultiIndicatorTableViewCell.self, forCellReuseIdentifier: multiCellID)
         configureView()
         discribeElementsView()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let heightFilterStackView: CGFloat = 100
+        let heightFilterStackView: CGFloat = 40
         let heightIndicatorsTableView: CGFloat = view.frame.height - heightFilterStackView - view.safeAreaInsets.top  - (tabBarController?.tabBar.frame.height ?? 0)
         
         indicatorsTableView.frame = .init(x: 0, y: navigationController?.navigationBar.frame.maxY ?? 0, width: view.frame.width, height: heightIndicatorsTableView)
         filterStackView.frame = .init(x: 0, y: indicatorsTableView.frame.maxY, width: view.frame.width, height: heightFilterStackView)
     }
     
+    //MARK: - Function
+    
+    func indicatorsUpdate(indicator: Indicator) {
+        if !indicators.contains(where: { $0 == indicator }){
+            indicators.append(indicator)
+            indicatorsTableView.reloadData()
+        }
+    }
+    
     //MARK: Private function
+    
     private func configureView(){
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        view.backgroundColor = brush.backgroundColor()
         view.addSubview(indicatorsTableView)
         view.addSubview(filterStackView)
+                
+        filterStackView.alignment = .fill
+        filterStackView.distribution = .fillEqually
+        filterStackView.spacing = 1
         
-        let openInicatorUIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(openIndicatorsViewController))
-        navigationItem.rightBarButtonItem = openInicatorUIBarButtonItem
+        filterStackView.addArrangedSubview(todayFilterButton)
+        filterStackView.addArrangedSubview(weekFilterButton)
+        filterStackView.addArrangedSubview(monthFilterButton)
+        filterStackView.addArrangedSubview(filterSetupButton)
+        
+        todayFilterButton.translatesAutoresizingMaskIntoConstraints = false
+        weekFilterButton.translatesAutoresizingMaskIntoConstraints = false
+        monthFilterButton.translatesAutoresizingMaskIntoConstraints = false
+        filterSetupButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        let addInicatorUIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addIndicator))
+        navigationItem.rightBarButtonItem = addInicatorUIBarButtonItem
+        
     }
     
     private func discribeElementsView(){
-        navigationItem.title = "Индикаторы" 
-
+        navigationItem.title = "Индикаторы"
+                
+        todayFilterButton.backgroundColor = brush.backgroundColor()
+        todayFilterButton.setTitle("Сегодня", for: .normal)
+        
+        weekFilterButton.backgroundColor = brush.backgroundColor()
+        weekFilterButton.setTitle("Неделя", for: .normal)
+        
+        monthFilterButton.backgroundColor = brush.backgroundColor()
+        monthFilterButton.setTitle("Квартал", for: .normal)
+        
+        filterSetupButton.backgroundColor = brush.backgroundColor()
+        filterSetupButton.setImage(UIImage(systemName: "gearshape"), for: .normal)
+        filterSetupButton.imageView?.tintColor = .white
     }
 
-    @objc private func openIndicatorsViewController(){
+    @objc private func addIndicator(){
         let indicatorsViewController = IndicatorsViewController()
+        indicatorsViewController.handleUpdatedIndicatorsDelegate = self
         self.navigationController?.pushViewController(indicatorsViewController, animated: true)
     }
 }
@@ -67,18 +121,24 @@ extension MyIndicatorsViewController: UITableViewDelegate {
 
 extension MyIndicatorsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        20
+        indicators.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? SingleIndicatorTableViewCell else {
-            preconditionFailure("Error")
+        if let singleIndicator = self.indicators[indexPath.row] as? SingleIndicator {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: singleCellID, for: indexPath) as? SingleIndicatorTableViewCell else { return UITableViewCell() }
+            cell.configureCell(indicator: singleIndicator)
+            return cell
+        } else if let multiIndicator = self.indicators[indexPath.row] as? MultiIndicator {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: multiCellID, for: indexPath) as? MultiIndicatorTableViewCell else { return UITableViewCell() }
+            cell.configureCell(indicator: multiIndicator)
+            return cell
+        } else {
+            return UITableViewCell()
         }
-        //cell.configureCell(imageName: "person.slash.fill")
-        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 80
     }
 }

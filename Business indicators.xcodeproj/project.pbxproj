@@ -15,12 +15,13 @@
 		FC7494E52B6AD2B5004E1349 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC7494E42B6AD2B5004E1349 /* Assets.xcassets */; };
 		FC7494E82B6AD2B5004E1349 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC7494E62B6AD2B5004E1349 /* LaunchScreen.storyboard */; };
 		FC7494F12B6C0891004E1349 /* MyIndicatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7494F02B6C0891004E1349 /* MyIndicatorsViewController.swift */; };
-		FC7494F32B6C194D004E1349 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7494F22B6C194D004E1349 /* TabBarController.swift */; };
 		FC7494F52B6C1EAA004E1349 /* ReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7494F42B6C1EAA004E1349 /* ReportsViewController.swift */; };
 		FCC71F382B70233F00604545 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC71F372B70233F00604545 /* Api.swift */; };
 		FCC71F3A2B702D1A00604545 /* BusinessIndicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC71F392B702D1A00604545 /* BusinessIndicators.swift */; };
 		FCC71F3C2B75641C00604545 /* IndicatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC71F3B2B75641C00604545 /* IndicatorsViewController.swift */; };
 		FCC71F5E2B89383C00604545 /* MultiIndicatorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC71F5D2B89383C00604545 /* MultiIndicatorTableViewCell.swift */; };
+		FCC71F842B910E9100604545 /* IndicatorsUpdateble.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC71F832B910E9100604545 /* IndicatorsUpdateble.swift */; };
+		FCC71F862B939B0200604545 /* UIColor+Extansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC71F852B939B0200604545 /* UIColor+Extansion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,12 +35,13 @@
 		FC7494E72B6AD2B5004E1349 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC7494E92B6AD2B5004E1349 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC7494F02B6C0891004E1349 /* MyIndicatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyIndicatorsViewController.swift; sourceTree = "<group>"; };
-		FC7494F22B6C194D004E1349 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		FC7494F42B6C1EAA004E1349 /* ReportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewController.swift; sourceTree = "<group>"; };
 		FCC71F372B70233F00604545 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		FCC71F392B702D1A00604545 /* BusinessIndicators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessIndicators.swift; sourceTree = "<group>"; };
 		FCC71F3B2B75641C00604545 /* IndicatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsViewController.swift; sourceTree = "<group>"; };
 		FCC71F5D2B89383C00604545 /* MultiIndicatorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiIndicatorTableViewCell.swift; sourceTree = "<group>"; };
+		FCC71F832B910E9100604545 /* IndicatorsUpdateble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsUpdateble.swift; sourceTree = "<group>"; };
+		FCC71F852B939B0200604545 /* UIColor+Extansion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extansion.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			children = (
 				FCC71F372B70233F00604545 /* Api.swift */,
 				FCC71F392B702D1A00604545 /* BusinessIndicators.swift */,
+				FCC71F852B939B0200604545 /* UIColor+Extansion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -106,11 +109,11 @@
 		FC7494EF2B6AF490004E1349 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FCC71F832B910E9100604545 /* IndicatorsUpdateble.swift */,
 				FCC71F3B2B75641C00604545 /* IndicatorsViewController.swift */,
 				FC7494DF2B6AD2B4004E1349 /* LoginViewController.swift */,
 				FC7494F02B6C0891004E1349 /* MyIndicatorsViewController.swift */,
 				FC7494F42B6C1EAA004E1349 /* ReportsViewController.swift */,
-				FC7494F22B6C194D004E1349 /* TabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -190,12 +193,13 @@
 				FC7494F12B6C0891004E1349 /* MyIndicatorsViewController.swift in Sources */,
 				FC7494E02B6AD2B4004E1349 /* LoginViewController.swift in Sources */,
 				FC7494DC2B6AD2B4004E1349 /* AppDelegate.swift in Sources */,
-				FC7494F32B6C194D004E1349 /* TabBarController.swift in Sources */,
 				FCC71F3C2B75641C00604545 /* IndicatorsViewController.swift in Sources */,
 				FCC71F3A2B702D1A00604545 /* BusinessIndicators.swift in Sources */,
 				FC2C5E482B6D638400560BD9 /* SingleIndicatorTableViewCell.swift in Sources */,
+				FCC71F862B939B0200604545 /* UIColor+Extansion.swift in Sources */,
 				FC7494F52B6C1EAA004E1349 /* ReportsViewController.swift in Sources */,
 				FCC71F382B70233F00604545 /* Api.swift in Sources */,
+				FCC71F842B910E9100604545 /* IndicatorsUpdateble.swift in Sources */,
 				FC7494DE2B6AD2B4004E1349 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
