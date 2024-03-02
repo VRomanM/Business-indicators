@@ -82,6 +82,6 @@ extension IndicatorsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        70
+        80
     }
 }
