@@ -14,11 +14,7 @@ class SingleIndicatorTableViewCell: UITableViewCell {
     private let nameIndicatorLabel: UILabel = UILabel()
     private let valueIndicatorLabel: UILabel = UILabel()
     private let indicatorImage: UIImageView = UIImageView()
-    
-    //MARK: - Private properties
-    
-    private let brush = UIColor()
-    
+        
     //MARK: - Constructions
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -57,19 +53,19 @@ class SingleIndicatorTableViewCell: UITableViewCell {
         indicatorImage.contentMode = .scaleAspectFit
         contentView.addSubview(nameIndicatorLabel)
         contentView.addSubview(valueIndicatorLabel)
-        contentView.superview?.backgroundColor = brush.backgroundColor()
+        contentView.superview?.backgroundColor = UIColor.backgroundColor
     }
     
     //MARK: - Function
     
     func configureCell(indicator: SingleIndicator) {
         indicatorImage.image = indicator.image ?? UIImage(systemName: "person")
-        indicatorImage.tintColor = brush.textColor()
+        indicatorImage.tintColor = UIColor.textColor
         
         nameIndicatorLabel.text = indicator.title
-        nameIndicatorLabel.textColor = brush.textColor()
+        nameIndicatorLabel.textColor = UIColor.textColor
         
         valueIndicatorLabel.text = indicator.value
-        valueIndicatorLabel.textColor = brush.textColor()
+        valueIndicatorLabel.textColor = UIColor.textColor
     }
 }

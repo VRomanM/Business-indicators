@@ -15,7 +15,7 @@ class IndicatorsViewController: UIViewController {
         let indicatorsTableView = UITableView()
         indicatorsTableView.delegate = self
         indicatorsTableView.dataSource = self
-        indicatorsTableView.backgroundColor = brush.backgroundColor()
+        indicatorsTableView.backgroundColor = UIColor.backgroundColor
         return indicatorsTableView
     }()
     
@@ -28,7 +28,6 @@ class IndicatorsViewController: UIViewController {
     private let singleCellID = "singleCellID"
     private let multiCellID = "multiCellID"
     private var indicators = [Indicator]()
-    private let brush = UIColor()
     
     //MARK: - Lifecycle
     
@@ -49,7 +48,7 @@ class IndicatorsViewController: UIViewController {
     //MARK: Private function
     
     private func configureView() {
-        view.backgroundColor = brush.backgroundColor()
+        view.backgroundColor = UIColor.backgroundColor
         view.addSubview(indicatorsTableView)
     }
 }

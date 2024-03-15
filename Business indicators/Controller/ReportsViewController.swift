@@ -8,16 +8,12 @@
 import UIKit
 
 class ReportsViewController: UIViewController {
-    
-    //MARK: - Private properties
-    
-    private let brush = UIColor()
-    
+        
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = brush.backgroundColor()
+        view.backgroundColor = UIColor.backgroundColor
     }
 }

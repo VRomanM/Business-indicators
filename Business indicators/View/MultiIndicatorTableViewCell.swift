@@ -17,7 +17,6 @@ class MultiIndicatorTableViewCell: UITableViewCell {
     private let valueIndicatorLabel3: UILabel = UILabel()
     private let indicatorImage: UIImageView = UIImageView()
     private let valuesVerticalStackView: UIStackView = UIStackView()
-    private let brush = UIColor()
     
     //MARK: - Constructions
     
@@ -67,24 +66,24 @@ class MultiIndicatorTableViewCell: UITableViewCell {
         valuesVerticalStackView.addSubview(valueIndicatorLabel1)
         valuesVerticalStackView.addSubview(valueIndicatorLabel2)
         valuesVerticalStackView.addSubview(valueIndicatorLabel3)
-        contentView.superview?.backgroundColor = brush.backgroundColor()
+        contentView.superview?.backgroundColor = UIColor.backgroundColor
     }
     
     //MARK: - Function
     
     func configureCell(indicator: MultiIndicator) {
         indicatorImage.image = indicator.image ?? UIImage(systemName: "person")
-        indicatorImage.tintColor = brush.textColor()
+        indicatorImage.tintColor = UIColor.textColor
         
         nameIndicatorLabel.text = indicator.title
-        nameIndicatorLabel.textColor = brush.textColor()
+        nameIndicatorLabel.textColor = UIColor.textColor
         
         valueIndicatorLabel1.text = indicator.values[0]
-        valueIndicatorLabel1.textColor = brush.textColor()
+        valueIndicatorLabel1.textColor = UIColor.textColor
         valueIndicatorLabel2.text = indicator.values[1]
-        valueIndicatorLabel2.textColor = brush.textColor()
+        valueIndicatorLabel2.textColor = UIColor.textColor
         valueIndicatorLabel3.text = indicator.values[2]
-        valueIndicatorLabel3.textColor = brush.textColor()
+        valueIndicatorLabel3.textColor = UIColor.textColor
     }
 
 }

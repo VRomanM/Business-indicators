@@ -69,7 +69,6 @@
 			children = (
 				FCC71F372B70233F00604545 /* Api.swift */,
 				FCC71F392B702D1A00604545 /* BusinessIndicators.swift */,
-				FCC71F852B939B0200604545 /* UIColor+Extansion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -95,6 +94,7 @@
 			children = (
 				FC7494DB2B6AD2B4004E1349 /* AppDelegate.swift */,
 				FC7494EF2B6AF490004E1349 /* Controller */,
+				FCB80E892BA4626900015447 /* Extensions */,
 				FC2C5E492B6D7FED00560BD9 /* Model */,
 				FC2C5E462B6D62F700560BD9 /* View */,
 				FC7494E12B6AD2B4004E1349 /* Main.storyboard */,
@@ -116,6 +116,14 @@
 				FC7494F42B6C1EAA004E1349 /* ReportsViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		FCB80E892BA4626900015447 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FCC71F852B939B0200604545 /* UIColor+Extansion.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

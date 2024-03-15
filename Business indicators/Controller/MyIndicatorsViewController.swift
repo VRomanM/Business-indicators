@@ -15,7 +15,7 @@ class MyIndicatorsViewController: UIViewController, IndicatorsUpdateble {
         let indicatorstableView = UITableView()
         indicatorstableView.delegate = self
         indicatorstableView.dataSource = self
-        indicatorstableView.backgroundColor = brush.backgroundColor()
+        indicatorstableView.backgroundColor = UIColor.backgroundColor
         return indicatorstableView
     }()
     private let filterStackView = UIStackView()
@@ -32,7 +32,6 @@ class MyIndicatorsViewController: UIViewController, IndicatorsUpdateble {
     
     private let singleCellID = "singleCellID"
     private let multiCellID = "multiCellID"
-    private let brush = UIColor()
     
     //MARK: - Lifecycle
     
@@ -66,23 +65,23 @@ class MyIndicatorsViewController: UIViewController, IndicatorsUpdateble {
     //MARK: Private function
     
     private func configureView(){
-        view.backgroundColor = brush.backgroundColor()
+        view.backgroundColor = UIColor.backgroundColor
         view.addSubview(indicatorsTableView)
         view.addSubview(filterStackView)
                 
         filterStackView.alignment = .fill
         filterStackView.distribution = .fillEqually
         filterStackView.spacing = 1
-        
+                
         filterStackView.addArrangedSubview(todayFilterButton)
         filterStackView.addArrangedSubview(weekFilterButton)
         filterStackView.addArrangedSubview(monthFilterButton)
         filterStackView.addArrangedSubview(filterSetupButton)
         
-        todayFilterButton.translatesAutoresizingMaskIntoConstraints = false
-        weekFilterButton.translatesAutoresizingMaskIntoConstraints = false
-        monthFilterButton.translatesAutoresizingMaskIntoConstraints = false
-        filterSetupButton.translatesAutoresizingMaskIntoConstraints = false
+//        todayFilterButton.translatesAutoresizingMaskIntoConstraints = false
+//        weekFilterButton.translatesAutoresizingMaskIntoConstraints = false
+//        monthFilterButton.translatesAutoresizingMaskIntoConstraints = false
+//        filterSetupButton.translatesAutoresizingMaskIntoConstraints = false
         
         let addInicatorUIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addIndicator))
         navigationItem.rightBarButtonItem = addInicatorUIBarButtonItem
@@ -92,16 +91,16 @@ class MyIndicatorsViewController: UIViewController, IndicatorsUpdateble {
     private func discribeElementsView(){
         navigationItem.title = "Индикаторы"
                 
-        todayFilterButton.backgroundColor = brush.backgroundColor()
+        todayFilterButton.backgroundColor = UIColor.backgroundColor
         todayFilterButton.setTitle("Сегодня", for: .normal)
         
-        weekFilterButton.backgroundColor = brush.backgroundColor()
+        weekFilterButton.backgroundColor = UIColor.backgroundColor
         weekFilterButton.setTitle("Неделя", for: .normal)
         
-        monthFilterButton.backgroundColor = brush.backgroundColor()
+        monthFilterButton.backgroundColor = UIColor.backgroundColor
         monthFilterButton.setTitle("Квартал", for: .normal)
         
-        filterSetupButton.backgroundColor = brush.backgroundColor()
+        filterSetupButton.backgroundColor = UIColor.backgroundColor
         filterSetupButton.setImage(UIImage(systemName: "gearshape"), for: .normal)
         filterSetupButton.imageView?.tintColor = .white
     }

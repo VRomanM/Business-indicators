@@ -10,7 +10,6 @@ import UIKit
 class LoginViewController: UIViewController {
     
     //MARK: - Private properties
-    private let brush = UIColor()
     private let loginTextField: UITextField = UITextField()
     private let passwordTextField: UITextField = UITextField()
     private let signInButton: UIButton = UIButton()
@@ -20,7 +19,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = brush.backgroundColor()
+        view.backgroundColor = UIColor.backgroundColor
         addElementsView()
         discribeElementsView()
     }
@@ -61,7 +60,7 @@ class LoginViewController: UIViewController {
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.placeholder = "password"
         
-        signInButton.backgroundColor = brush.buttonColor()
+        signInButton.backgroundColor = .buttonColor
         signInButton.layer.cornerRadius = 5
         signInButton.setTitle("Sign In", for: .normal)
         signInButton.addTarget(self, action: #selector(signIn), for: .touchDown)
@@ -70,13 +69,13 @@ class LoginViewController: UIViewController {
     @objc private func signIn(){
         let tabBarController = UITabBarController()
         tabBarController.tabBar.backgroundImage = UIImage()
-        tabBarController.tabBar.tintColor = brush.selectedTextColor()
-        tabBarController.tabBar.unselectedItemTintColor = brush.unselectedTextColor()
-                
+        tabBarController.tabBar.tintColor = UIColor.selectedTextColor
+        tabBarController.tabBar.unselectedItemTintColor = UIColor.unselectedTextColor
+        
         let indicatorsNavigationController = UINavigationController(rootViewController: MyIndicatorsViewController())
         indicatorsNavigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         indicatorsNavigationController.navigationBar.shadowImage = UIImage()
-        indicatorsNavigationController.navigationBar.tintColor = brush.textColor()
+        indicatorsNavigationController.navigationBar.tintColor = UIColor.textColor
         indicatorsNavigationController.navigationBar.barStyle = .black
         
         if #available(iOS 11.0, *) {
