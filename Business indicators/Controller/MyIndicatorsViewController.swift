@@ -32,6 +32,12 @@ class MyIndicatorsViewController: UIViewController, IndicatorsUpdateble {
     
     private let singleCellID = "singleCellID"
     private let multiCellID = "multiCellID"
+    private lazy var networkManager: NetworkManager = {
+        let networkManager = NetworkManager()
+        return networkManager
+    }()
+    #warning("TEST_NetworkLayer")
+    private var facts = [Fact]()
     
     //MARK: - Lifecycle
     
@@ -42,6 +48,19 @@ class MyIndicatorsViewController: UIViewController, IndicatorsUpdateble {
         indicatorsTableView.register(MultiIndicatorTableViewCell.self, forCellReuseIdentifier: multiCellID)
         configureView()
         discribeElementsView()
+        
+        #warning("TEST_NetworkLayer")
+        networkManager.getFactsAboutCats(page: 3) { facts, error in
+            if let error = error {
+                print(error)
+            }
+            if let facts = facts {
+                self.facts = facts
+            }
+            DispatchQueue.main.async {
+                self.indicatorsTableView.reloadData()
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -77,12 +96,7 @@ class MyIndicatorsViewController: UIViewController, IndicatorsUpdateble {
         filterStackView.addArrangedSubview(weekFilterButton)
         filterStackView.addArrangedSubview(monthFilterButton)
         filterStackView.addArrangedSubview(filterSetupButton)
-        
-//        todayFilterButton.translatesAutoresizingMaskIntoConstraints = false
-//        weekFilterButton.translatesAutoresizingMaskIntoConstraints = false
-//        monthFilterButton.translatesAutoresizingMaskIntoConstraints = false
-//        filterSetupButton.translatesAutoresizingMaskIntoConstraints = false
-        
+                
         let addInicatorUIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addIndicator))
         navigationItem.rightBarButtonItem = addInicatorUIBarButtonItem
         
@@ -120,21 +134,27 @@ extension MyIndicatorsViewController: UITableViewDelegate {
 
 extension MyIndicatorsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        indicators.count
+        #warning("TEST_NetworkLayer")
+        //indicators.count
+        return facts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let singleIndicator = self.indicators[indexPath.row] as? SingleIndicator {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: singleCellID, for: indexPath) as? SingleIndicatorTableViewCell else { return UITableViewCell() }
-            cell.configureCell(indicator: singleIndicator)
-            return cell
-        } else if let multiIndicator = self.indicators[indexPath.row] as? MultiIndicator {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: multiCellID, for: indexPath) as? MultiIndicatorTableViewCell else { return UITableViewCell() }
-            cell.configureCell(indicator: multiIndicator)
-            return cell
-        } else {
-            return UITableViewCell()
-        }
+        #warning("TEST_NetworkLayer")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: singleCellID, for: indexPath) as? SingleIndicatorTableViewCell else { return UITableViewCell() }
+        cell.configureCell(fact: self.facts[indexPath.row])
+        return cell
+//        if let singleIndicator = self.indicators[indexPath.row] as? SingleIndicator {
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: singleCellID, for: indexPath) as? SingleIndicatorTableViewCell else { return UITableViewCell() }
+//            cell.configureCell(indicator: singleIndicator)
+//            return cell
+//        } else if let multiIndicator = self.indicators[indexPath.row] as? MultiIndicator {
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: multiCellID, for: indexPath) as? MultiIndicatorTableViewCell else { return UITableViewCell() }
+//            cell.configureCell(indicator: multiIndicator)
+//            return cell
+//        } else {
+//            return UITableViewCell()
+//        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

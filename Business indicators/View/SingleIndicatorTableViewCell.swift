@@ -68,4 +68,16 @@ class SingleIndicatorTableViewCell: UITableViewCell {
         valueIndicatorLabel.text = indicator.value
         valueIndicatorLabel.textColor = UIColor.textColor
     }
+        
+    #warning("TEST_NetworkLayer")
+    func configureCell(fact: Fact) {
+        indicatorImage.image = UIImage(systemName: "person")
+        indicatorImage.tintColor = UIColor.textColor
+        
+        nameIndicatorLabel.text = fact.fact
+        nameIndicatorLabel.textColor = UIColor.textColor
+        
+        valueIndicatorLabel.text = String(fact.length!)
+        valueIndicatorLabel.textColor = UIColor.textColor
+    }
 }
