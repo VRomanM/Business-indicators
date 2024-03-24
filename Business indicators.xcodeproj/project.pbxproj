@@ -16,6 +16,17 @@
 		FC7494E82B6AD2B5004E1349 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC7494E62B6AD2B5004E1349 /* LaunchScreen.storyboard */; };
 		FC7494F12B6C0891004E1349 /* MyIndicatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7494F02B6C0891004E1349 /* MyIndicatorsViewController.swift */; };
 		FC7494F52B6C1EAA004E1349 /* ReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7494F42B6C1EAA004E1349 /* ReportsViewController.swift */; };
+		FCB80E952BA4650D00015447 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB80E942BA4650D00015447 /* EndPointType.swift */; };
+		FCB80E972BA4661400015447 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB80E962BA4661400015447 /* HTTPMethod.swift */; };
+		FCB80E992BA4721100015447 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB80E982BA4721100015447 /* HTTPTask.swift */; };
+		FCB80E9B2BA4730900015447 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB80E9A2BA4730900015447 /* ParameterEncoding.swift */; };
+		FCB80E9D2BA4747900015447 /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB80E9C2BA4747900015447 /* URLParameterEncoder.swift */; };
+		FCB80E9F2BA476FE00015447 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB80E9E2BA476FE00015447 /* JSONParameterEncoder.swift */; };
+		FCB80EA12BA4780100015447 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB80EA02BA4780100015447 /* NetworkRouter.swift */; };
+		FCB80EA32BA481D200015447 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB80EA22BA481D200015447 /* Router.swift */; };
+		FCB80EA92BA4967200015447 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB80EA82BA4967200015447 /* NetworkManager.swift */; };
+		FCB80EAB2BA4B2B200015447 /* FactsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB80EAA2BA4B2B200015447 /* FactsEndpoint.swift */; };
+		FCB80EAD2BA74A9000015447 /* FactsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB80EAC2BA74A9000015447 /* FactsModel.swift */; };
 		FCC71F382B70233F00604545 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC71F372B70233F00604545 /* Api.swift */; };
 		FCC71F3A2B702D1A00604545 /* BusinessIndicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC71F392B702D1A00604545 /* BusinessIndicators.swift */; };
 		FCC71F3C2B75641C00604545 /* IndicatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC71F3B2B75641C00604545 /* IndicatorsViewController.swift */; };
@@ -36,6 +47,17 @@
 		FC7494E92B6AD2B5004E1349 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC7494F02B6C0891004E1349 /* MyIndicatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyIndicatorsViewController.swift; sourceTree = "<group>"; };
 		FC7494F42B6C1EAA004E1349 /* ReportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewController.swift; sourceTree = "<group>"; };
+		FCB80E942BA4650D00015447 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
+		FCB80E962BA4661400015447 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		FCB80E982BA4721100015447 /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
+		FCB80E9A2BA4730900015447 /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		FCB80E9C2BA4747900015447 /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
+		FCB80E9E2BA476FE00015447 /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
+		FCB80EA02BA4780100015447 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		FCB80EA22BA481D200015447 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		FCB80EA82BA4967200015447 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		FCB80EAA2BA4B2B200015447 /* FactsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsEndpoint.swift; sourceTree = "<group>"; };
+		FCB80EAC2BA74A9000015447 /* FactsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsModel.swift; sourceTree = "<group>"; };
 		FCC71F372B70233F00604545 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		FCC71F392B702D1A00604545 /* BusinessIndicators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessIndicators.swift; sourceTree = "<group>"; };
 		FCC71F3B2B75641C00604545 /* IndicatorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorsViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +118,7 @@
 				FC7494EF2B6AF490004E1349 /* Controller */,
 				FCB80E892BA4626900015447 /* Extensions */,
 				FC2C5E492B6D7FED00560BD9 /* Model */,
+				FCB80E8A2BA4634200015447 /* NetworkLayer */,
 				FC2C5E462B6D62F700560BD9 /* View */,
 				FC7494E12B6AD2B4004E1349 /* Main.storyboard */,
 				FC7494DD2B6AD2B4004E1349 /* SceneDelegate.swift */,
@@ -124,6 +147,72 @@
 				FCC71F852B939B0200604545 /* UIColor+Extansion.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FCB80E8A2BA4634200015447 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				FCB80E8C2BA4639500015447 /* Model */,
+				FCB80E8D2BA463AE00015447 /* Networking */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		FCB80E8C2BA4639500015447 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FCB80EAC2BA74A9000015447 /* FactsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FCB80E8D2BA463AE00015447 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				FCB80E922BA463EC00015447 /* EndPoint */,
+				FCB80E912BA463E600015447 /* Manager */,
+				FCB80E902BA463DC00015447 /* Service */,
+				FCB80E8E2BA463B700015447 /* Encoding */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		FCB80E8E2BA463B700015447 /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				FCB80E9E2BA476FE00015447 /* JSONParameterEncoder.swift */,
+				FCB80E9A2BA4730900015447 /* ParameterEncoding.swift */,
+				FCB80E9C2BA4747900015447 /* URLParameterEncoder.swift */,
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
+		FCB80E902BA463DC00015447 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				FCB80E962BA4661400015447 /* HTTPMethod.swift */,
+				FCB80E982BA4721100015447 /* HTTPTask.swift */,
+				FCB80EA02BA4780100015447 /* NetworkRouter.swift */,
+				FCB80EA22BA481D200015447 /* Router.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		FCB80E912BA463E600015447 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				FCB80EA82BA4967200015447 /* NetworkManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		FCB80E922BA463EC00015447 /* EndPoint */ = {
+			isa = PBXGroup;
+			children = (
+				FCB80E942BA4650D00015447 /* EndPointType.swift */,
+				FCB80EAA2BA4B2B200015447 /* FactsEndpoint.swift */,
+			);
+			path = EndPoint;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,17 +286,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCB80EA92BA4967200015447 /* NetworkManager.swift in Sources */,
 				FCC71F5E2B89383C00604545 /* MultiIndicatorTableViewCell.swift in Sources */,
 				FC7494F12B6C0891004E1349 /* MyIndicatorsViewController.swift in Sources */,
+				FCB80E9B2BA4730900015447 /* ParameterEncoding.swift in Sources */,
+				FCB80E972BA4661400015447 /* HTTPMethod.swift in Sources */,
+				FCB80E952BA4650D00015447 /* EndPointType.swift in Sources */,
 				FC7494E02B6AD2B4004E1349 /* LoginViewController.swift in Sources */,
+				FCB80EAD2BA74A9000015447 /* FactsModel.swift in Sources */,
+				FCB80EAB2BA4B2B200015447 /* FactsEndpoint.swift in Sources */,
 				FC7494DC2B6AD2B4004E1349 /* AppDelegate.swift in Sources */,
+				FCB80E992BA4721100015447 /* HTTPTask.swift in Sources */,
 				FCC71F3C2B75641C00604545 /* IndicatorsViewController.swift in Sources */,
 				FCC71F3A2B702D1A00604545 /* BusinessIndicators.swift in Sources */,
 				FC2C5E482B6D638400560BD9 /* SingleIndicatorTableViewCell.swift in Sources */,
 				FCC71F862B939B0200604545 /* UIColor+Extansion.swift in Sources */,
+				FCB80EA32BA481D200015447 /* Router.swift in Sources */,
+				FCB80E9D2BA4747900015447 /* URLParameterEncoder.swift in Sources */,
 				FC7494F52B6C1EAA004E1349 /* ReportsViewController.swift in Sources */,
+				FCB80E9F2BA476FE00015447 /* JSONParameterEncoder.swift in Sources */,
 				FCC71F382B70233F00604545 /* Api.swift in Sources */,
 				FCC71F842B910E9100604545 /* IndicatorsUpdateble.swift in Sources */,
+				FCB80EA12BA4780100015447 /* NetworkRouter.swift in Sources */,
 				FC7494DE2B6AD2B4004E1349 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
